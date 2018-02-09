@@ -8,10 +8,10 @@
   var moment = (typeof require !== 'undefined' && require !== null) && !require.amd ? require('moment') : this.moment;
 
   var parserExtensions = [];
+    var td;
 
   var parseHoliday = function(self, date, adjust) {
     var days = [], pd;
-
     for (var i = 0; i < parserExtensions.length; i++) {
       var pe = parserExtensions[i](self, date);
       if (pe || pe === false) { pd = pe; }
@@ -32,7 +32,7 @@
         var ds = dates[i].split('/');
 
         if (ds.length === 1 || (ds.length === 2 && ds[1].charAt(0) !== '(' && ds[1].length === 4)) {
-          var td = dates[i];
+          td = dates[i];
           i = -1;
           dates = [];
           for (var ii = 1; ii < 13; ii++) { dates.push(ii + '/' + td); }
